@@ -1,4 +1,4 @@
-package com.javatechie.spring.aop.api.advice;
+package com.javatechie.spring.aop.api.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
