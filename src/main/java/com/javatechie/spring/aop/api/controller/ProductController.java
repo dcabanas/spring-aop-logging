@@ -24,15 +24,15 @@ public class ProductController {
 
 
     @PostMapping("/save")
-    public Product saveProduct(@RequestBody SaveProductDTO product) {
+    public ResponseEntity<Product> saveProduct(@RequestBody SaveProductDTO product) {
 
-        return service.addProduct(product);
+        return ResponseEntity.ok(service.addProduct(product));
     }
 
     @GetMapping("/findProducts")
-    public List<Product> getProducts() {
+    public ResponseEntity<List<Product>> getProducts() {
 
-        return service.findAllProducts();
+        return ResponseEntity.ok(service.findAllProducts());
     }
 
     @PostMapping("/update")
@@ -55,6 +55,18 @@ public class ProductController {
         }
 
         return ResponseEntity.ok(true);
+    }
+
+    @PostMapping("/findProduct/{id}")
+    public ResponseEntity<Product> findProduct(@PathVariable int id) {
+
+        Product found = service.findProduct(id);
+
+        if (found == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(found);
     }
 
 }

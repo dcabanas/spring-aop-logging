@@ -21,7 +21,7 @@ public class LoggingAspect {
     // o value do pointcut pode ir diretamente para dentro do @Around()
     @Pointcut(value = "execution(* com.javatechie.spring.aop.api.*.*Controller.*(..) )")
     public void myPointcut() {
-        // Method is empty as this is just a Pointcut, the implementations is in the advice bellow.
+        // Method is empty as this is just a Pointcut, the implementation is in the advice bellow.
     }
 
     @Around("myPointcut()")

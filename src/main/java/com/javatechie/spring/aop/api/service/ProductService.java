@@ -26,6 +26,7 @@ public class ProductService {
             .collect(Collectors.toList()));
     }
     public Product addProduct(SaveProductDTO product) {
+
         return repository.saveAndFlush(Product.convert(product));
     }
 
@@ -35,23 +36,26 @@ public class ProductService {
 
     public Product updateProduct(UpdateProductDTO productDTO) {
 
-        Product p = repository.findById(productDTO.getId()).orElse(null);
+        Product p = findProduct(productDTO.getId());
 
         if (p == null) return null;
 
         p.setPrice(productDTO.getPrice());
-        repository.saveAndFlush(p);
-
-        return p;
+        return repository.saveAndFlush(p);
     }
 
     public boolean deleteProduct(int id) {
 
-        Product p = repository.findById(id).orElse(null);
+        Product p = findProduct(id);
 
         if (p == null) return false;
 
         repository.delete(p);
         return true;
+    }
+
+    public Product findProduct(int id) {
+
+        return repository.findById(id).orElse(null);
     }
 }
