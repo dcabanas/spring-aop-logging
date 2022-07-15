@@ -22,7 +22,7 @@ public class ProductService {
 
     @PostConstruct
     public void initDB() {
-        repository.saveAll(Stream.of(new Product(101, "Book", 499), new Product(102, "laptop", 78000))
+        repository.saveAll(Stream.of(new Product(101, "123456789", "Book", 499), new Product(102, "123456789", "laptop", 78000))
             .collect(Collectors.toList()));
     }
     public Product addProduct(SaveProductDTO product) {

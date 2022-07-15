@@ -5,6 +5,7 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.CodeSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ public class LoggingAspect {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // o value do pointcut pode ir diretamente para dentro do @Around()
-    @Pointcut(value = "execution(* com.javatechie.spring.aop.api.*.*.*(..) )")
+    @Pointcut(value = "execution(* com.javatechie.spring.aop.api.*.*Controller.*(..) )")
     public void myPointcut() {
         // Method is empty as this is just a Pointcut, the implementations is in the advice bellow.
     }

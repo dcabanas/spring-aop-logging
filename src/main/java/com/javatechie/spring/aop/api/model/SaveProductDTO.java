@@ -5,19 +5,19 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class SaveProductDTO {
 
+    @ToString.Exclude
+    private String nif;
     private String name;
     private double price;
 
-    @Override
-    public String toString() {
-        return String.format("SaveProductDTO[name=%s, price=%.2f]", name, price);
-    }
 }

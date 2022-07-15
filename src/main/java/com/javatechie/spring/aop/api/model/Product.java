@@ -24,6 +24,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private String nif;
     private String name;
     private double price;
 
@@ -49,6 +50,7 @@ public class Product {
     public static Product convert(SaveProductDTO productDTO) {
 
         return Product.builder()
+            .nif(productDTO.getNif())
             .name(productDTO.getName())
             .price(productDTO.getPrice())
             .build();
